@@ -27,10 +27,13 @@ import Relude as Prelude hiding
   )
 
 import Control.Category as Prelude
+import Control.Monad.Syntax as Prelude
 import Data.Default as Prelude
 import Data.Foldable1 as Prelude (intercalate1)
 import Data.Foldable.WithIndex as Prelude
 import Data.Foldable1.WithIndex as Prelude
+import Data.Function.Syntax as Prelude
+import Data.Functor.Syntax as Prelude
 import Data.Functor.WithIndex as Prelude
 import Data.Traversable.WithIndex as Prelude
 import Data.Semialign as Prelude

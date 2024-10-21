@@ -74,6 +74,7 @@ library
     build-depends:    base
                     , relude
                       --
+                    , composition-extra
                     , data-default
                     , indexed-traversable
                     , semialign
