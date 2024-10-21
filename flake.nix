@@ -1,0 +1,14 @@
+{
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+
+  outputs = { self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+          project = pkgs.callPackage ./default.nix { inherit pkgs; };
+          overlay = pkgs.callPackage ./overlay.nix { inherit pkgs; };
+      in {
+        defaultPackage = project;
+        packages.overlay = overlay;
+      }
+    );
+}
