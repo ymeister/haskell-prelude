@@ -74,6 +74,7 @@ library
     build-depends:    base
                     , relude
                       --
+                    , data-default
                     , indexed-traversable
                     , semialign
                     , witherable

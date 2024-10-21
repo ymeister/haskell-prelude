@@ -27,6 +27,7 @@ import Relude as Prelude hiding
   )
 
 import Control.Category as Prelude
+import Data.Default as Prelude
 import Data.Foldable1 as Prelude (intercalate1)
 import Data.Foldable.WithIndex as Prelude
 import Data.Foldable1.WithIndex as Prelude
