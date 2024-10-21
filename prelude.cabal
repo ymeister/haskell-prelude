@@ -56,6 +56,13 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  Prelude
+                      Prelude.Prelude
+                      Prelude.Utils
+                      Prelude.Utils.Error
+                      Prelude.Utils.Foldable
+                      Prelude.Utils.List
+                      Prelude.Utils.Num
+                      Prelude.Utils.Text
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -67,6 +74,7 @@ library
     build-depends:    base
                     , relude
                       --
+                    , indexed-traversable
                     , semialign
                     , witherable
 
@@ -76,3 +84,9 @@ library
     -- Base language which the package is written in.
     default-language: Haskell2010
     default-extensions:
+      BangPatterns
+      LambdaCase
+      NoImplicitPrelude
+      OverloadedStrings
+      TypeApplications
+      TypeOperators
