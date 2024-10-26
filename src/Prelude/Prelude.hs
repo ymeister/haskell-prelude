@@ -35,6 +35,7 @@ import Data.Foldable1.WithIndex as Prelude
 import Data.Function.Syntax as Prelude
 import Data.Functor.Syntax as Prelude
 import Data.Functor.WithIndex as Prelude
+import Data.Generics.Labels ()
 import Data.Traversable.WithIndex as Prelude
 import Data.Semialign as Prelude
 import GHC.IsList as Prelude (IsList(..))

@@ -76,6 +76,7 @@ library
                       --
                     , composition-extra
                     , data-default
+                    , generic-lens
                     , indexed-traversable
                     , semialign
                     , witherable
