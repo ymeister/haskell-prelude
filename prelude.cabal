@@ -64,6 +64,9 @@ library
                       Prelude.Utils.Num
                       Prelude.Utils.Text
 
+    reexported-modules:
+      Control.Lens
+
     -- Modules included in this library but not exported.
     -- other-modules:
 
@@ -78,6 +81,7 @@ library
                     , data-default
                     , generic-lens
                     , indexed-traversable
+                    , lens
                     , semialign
                     , witherable
 
