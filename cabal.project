@@ -1,0 +1,6 @@
+packages: ./prelude.cabal
+
+optional-packages:
+  ./deps/higher-kinded/*
+
+import: cabal.project.config

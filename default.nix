@@ -1,5 +1,12 @@
 { pkgs ? import <nixpkgs> {} }:
 
-with pkgs;
+{
 
-haskellPackages.callCabal2nix "prelude" ./. {}
+  nix-haskell = import ./nix-haskell { inherit pkgs; };
+
+  nixpgks = {
+    project = pkgs.callPackage project-nixpkgs.project { inherit pkgs };
+    overlay = pkgs.callPackage project-nixpkgs.overlay { inherit pkgs };
+  };
+
+}

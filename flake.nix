@@ -1,18 +1,21 @@
 {
-  outputs = { self, nixpkgs, ... }:
-    let eachSystem = nixpkgs.lib.genAttrs
-          [ "x86_64-linux"
-            "aarch64-linux"
-          ];
+
+  inputs = {
+    self.submodules = true;
+
+    nix-haskell.url = "path:./deps/nix-haskell";
+
+    nixpkgs.follows = "nix-haskell/nixpkgs";
+  };
+
+  outputs = inputs@{ self, ... }:
+    let nixpkgs = if inputs ? "nixpkgs" then inputs.nixpkgs else builtins.getFlake "nixpkgs";
+        eachSystem = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in {
       packages = eachSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
-            project = pkgs.callPackage ./default.nix { inherit pkgs; };
-            overlay = pkgs.callPackage ./overlay.nix { inherit pkgs; };
-        in {
-          default = project;
-          overlay = overlay;
-        }
+            project = import ./default.nix { inherit pkgs; };
+        in project
       );
     };
 }
