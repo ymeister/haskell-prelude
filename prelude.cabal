@@ -47,25 +47,122 @@ extra-doc-files:
 -- Extra source files to be distributed with the package, such as examples, or a tutorial module.
 -- extra-source-files:
 
-common warnings
-    ghc-options: -Wall
+flag strict
+  description: Build with options, such as -Werror, which are inconvenient for development but good for CI
+  default: False
+  manual: True
+
+common common
+  default-language: GHC2024
+
+  default-extensions:
+      NoImplicitPrelude
+      --
+    , AllowAmbiguousTypes
+    , BangPatterns
+    , ConstraintKinds
+    , DataKinds
+    , DefaultSignatures
+    , DeriveDataTypeable
+    , DeriveFoldable
+    , DeriveFunctor
+    , DeriveGeneric
+    , DeriveTraversable
+    , DerivingStrategies
+    , DerivingVia
+    , DuplicateRecordFields
+    , EmptyCase
+    , EmptyDataDecls
+    , ExtendedDefaultRules
+    , FlexibleContexts
+    , FlexibleInstances
+    , FunctionalDependencies
+    , GADTs
+    , GeneralizedNewtypeDeriving
+    , ImportQualifiedPost
+    , InstanceSigs
+    , KindSignatures
+    , LambdaCase
+    , MultiParamTypeClasses
+    , MultiWayIf
+    , NumericUnderscores
+    , OverloadedLabels
+    , OverloadedStrings
+    , PartialTypeSignatures
+    , PatternSynonyms
+    , PolyKinds
+    , QuantifiedConstraints
+    , QuasiQuotes
+    , RankNTypes
+    , RecursiveDo
+    , ScopedTypeVariables
+    , StandaloneDeriving
+    , TemplateHaskell
+    , TupleSections
+    , TypeApplications
+    , TypeFamilies
+    , TypeFamilyDependencies
+    , TypeOperators
+    , UndecidableInstances
+    , ViewPatterns
+
+  if flag(strict)
+    ghc-options:  -Werror
+                  -Wunused-packages
+
+  ghc-options:    -O2 -fexpose-all-unfoldings
+
+  ghc-options:    -Wall -O2
+                  -Wno-type-defaults
+                  -Wincomplete-record-updates -Werror=incomplete-record-updates
+                  -Wincomplete-patterns -Werror=incomplete-patterns
+                  -Wincomplete-uni-patterns -Werror=incomplete-uni-patterns
+                  -Wpartial-fields -Werror=partial-fields
+                  -Wmissing-fields -Werror=missing-fields
+                  -Widentities
+                  -Wredundant-constraints
+                  -Wunused-packages
+
+  if impl(ghc >= 8.8)
+    ghc-options:
+                  -Wmissing-deriving-strategies
+                  -Werror=missing-deriving-strategies
+
+  if !(arch(wasm32))
+    ghc-options:  -threaded -rtsopts -with-rtsopts=-N
 
 library
     -- Import common warning flags.
-    import:           warnings
+    import:           common
 
     -- Modules exported by the library.
     exposed-modules:  Prelude
                       Prelude.Prelude
+                      Prelude.Orphans
                       Prelude.Utils
+                      Prelude.Utils.Composition
+                      Prelude.Utils.Constraints
                       Prelude.Utils.Error
                       Prelude.Utils.Foldable
+                      Prelude.Utils.Generics.Pair
+                      Prelude.Utils.Lens
                       Prelude.Utils.List
+                      Prelude.Utils.Map
                       Prelude.Utils.Num
+                      Prelude.Utils.Pair
                       Prelude.Utils.Text
+                      Prelude.Utils.Text.Orphans
+                      Prelude.Utils.These
+                      Prelude.Utils.Time
 
     reexported-modules:
-      Control.Lens
+                      Control.Lens
+                    , Data.Interval
+                    , Generic.Data
+                    , Generic.Data.Microsurgery
+                    , Generics.Kind
+                    , Generics.Kind.TH
+                    , Generics.Kind.Derive.Json
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -77,12 +174,37 @@ library
     build-depends:    base
                     , relude
                       --
+                    , aeson
                     , composition-extra
+                    , constraints
+                    , containers
                     , data-default
+                    , data-interval
+                    , errors
+                    , extra
+                    , generic-data
                     , generic-lens
+                    , generic-lens-core
+                    , higher-kinded
+                    , higher-kinded-data
+                    , higher-kinded-types
                     , indexed-traversable
+                    , kind-generics
+                    , kind-generics-deriving
+                    , kind-generics-th
                     , lens
+                    , mono-traversable
+                    , monoidal-containers
+                    , mtl
+                    , pretty
+                    , regex-tdfa
                     , semialign
+                    , text
+                    , these
+                    , time-compat
+                    , universe
+                    , uuid
+                    , vector
                     , witherable
 
     -- Directories containing source files.
