@@ -1,9 +1,7 @@
 {
 
   inputs = {
-    self.submodules = true;
-
-    nix-haskell.url = "path:./deps/nix-haskell";
+    nix-haskell.url = "git+file:./deps/nix-haskell?submodules=1";
 
     nixpkgs.follows = "nix-haskell/nixpkgs";
   };
