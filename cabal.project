@@ -1,6 +1,8 @@
 packages: ./prelude.cabal
 
 optional-packages:
-  ./deps/higher-kinded/*
+  ./deps/higher-kinded/higher-kinded
+  ./deps/higher-kinded/higher-kinded-data
+  ./deps/higher-kinded/higher-kinded-types
 
 import: cabal.project.config

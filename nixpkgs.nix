@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ inputs ? (import ./inputs.nix)
+, system ? builtins.currentSystem
+, pkgs ? (import inputs.nixpkgs { inherit system; })
+}:
 
 with pkgs;
 

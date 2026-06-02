@@ -1,6 +1,6 @@
-{ pkgs ? import <nixpkgs> {}
-, system ? (pkgs.system or builtins.currentSystem)
-, inputs ? {}
+{ inputs ? (import ./inputs.nix)
+, system ? builtins.currentSystem
+, pkgs ? (import inputs.nixpkgs { inherit system; })
 }:
 
 let nix-haskell-src = inputs.nix-haskell or ./deps/nix-haskell;

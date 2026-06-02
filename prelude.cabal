@@ -56,10 +56,16 @@ common common
   default-language: GHC2024
 
   default-extensions:
-      NoImplicitPrelude
+      GHC2024
+    , NoImplicitPrelude
       --
     , AllowAmbiguousTypes
+    , ApplicativeDo
+    , Arrows
     , BangPatterns
+    , BinaryLiterals
+    , BlockArguments
+    , ConstrainedClassMethods
     , ConstraintKinds
     , DataKinds
     , DefaultSignatures
@@ -67,43 +73,76 @@ common common
     , DeriveFoldable
     , DeriveFunctor
     , DeriveGeneric
+    , DeriveLift
     , DeriveTraversable
     , DerivingStrategies
     , DerivingVia
+    , DisambiguateRecordFields
+    , DoAndIfThenElse
     , DuplicateRecordFields
     , EmptyCase
     , EmptyDataDecls
+    , EmptyDataDeriving
+    , ExistentialQuantification
+    , ExplicitForAll
+    , ExplicitLevelImports
+    , ExplicitNamespaces
     , ExtendedDefaultRules
     , FlexibleContexts
     , FlexibleInstances
     , FunctionalDependencies
     , GADTs
     , GeneralizedNewtypeDeriving
+    , HexFloatLiterals
     , ImportQualifiedPost
+    , ImpredicativeTypes
     , InstanceSigs
     , KindSignatures
     , LambdaCase
+    , LexicalNegation
+    , LiberalTypeSynonyms
+    , MonadComprehensions
+    , MultilineStrings
     , MultiParamTypeClasses
     , MultiWayIf
+    , NamedDefaults
+    , NegativeLiterals
     , NumericUnderscores
+    , OrPatterns
     , OverloadedLabels
+    , OverloadedLists
+    , OverloadedRecordDot
+    , OverloadedRecordUpdate
     , OverloadedStrings
+    , PackageImports
+    , ParallelListComp
     , PartialTypeSignatures
+    , PatternGuards
     , PatternSynonyms
     , PolyKinds
+    , PostfixOperators
+    , QualifiedDo
     , QuantifiedConstraints
     , QuasiQuotes
     , RankNTypes
     , RecursiveDo
+    , RequiredTypeArguments
+    , RoleAnnotations
     , ScopedTypeVariables
     , StandaloneDeriving
+    , StandaloneKindSignatures
     , TemplateHaskell
+    , TemplateHaskellQuotes
+    , TransformListComp
     , TupleSections
     , TypeApplications
+    , TypeData
     , TypeFamilies
     , TypeFamilyDependencies
     , TypeOperators
+    , TypeSynonymInstances
     , UndecidableInstances
+    , UnicodeSyntax
     , ViewPatterns
 
   if flag(strict)

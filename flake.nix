@@ -6,6 +6,7 @@
     nix-haskell.url = ./deps/nix-haskell;
 
     nixpkgs.follows = "nix-haskell/nixpkgs";
+    flake-compat.follows = "nix-haskell/flake-compat";
   };
 
   outputs = inputs@{ self, ... }:
@@ -14,8 +15,16 @@
     in {
       packages = eachSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
-            project = import ./default.nix { inherit pkgs; };
+            project = import ./default.nix { inherit inputs system pkgs; };
         in project
+      );
+
+      devShells = eachSystem (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+            shell = import ./shell.nix { inherit inputs system pkgs; };
+        in {
+          default = shell;
+        }
       );
     };
 }
