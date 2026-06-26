@@ -106,6 +106,7 @@ common common
     , MultiWayIf
     , NamedDefaults
     , NegativeLiterals
+    , NoFieldSelectors
     , NumericUnderscores
     , OrPatterns
     , OverloadedLabels
