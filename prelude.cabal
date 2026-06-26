@@ -59,7 +59,6 @@ common common
       GHC2024
     , NoImplicitPrelude
       --
-    , AllowAmbiguousTypes
     , ApplicativeDo
     , Arrows
     , BangPatterns
