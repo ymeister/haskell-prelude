@@ -106,7 +106,11 @@ common common
     , MultiWayIf
     , NamedDefaults
     , NegativeLiterals
+    , NoAllowAmbiguousTypes
+    , NoDeriveAnyClass
     , NoFieldSelectors
+    , NoNamedFieldPuns
+    , NoRecordWildCards
     , NumericUnderscores
     , OrPatterns
     , OverloadedLabels
@@ -149,9 +153,14 @@ common common
     ghc-options:  -Werror
                   -Wunused-packages
 
-  ghc-options:    -O2 -fexpose-all-unfoldings
+  ghc-options:    -O2
+                  -fexpose-all-unfoldings
+                  -fspecialise
+                  -fspecialise-aggressively
+                  -flate-specialise
+                  -fcross-module-specialise
 
-  ghc-options:    -Wall -O2
+  ghc-options:    -Wall
                   -Wno-type-defaults
                   -Wincomplete-record-updates -Werror=incomplete-record-updates
                   -Wincomplete-patterns -Werror=incomplete-patterns
